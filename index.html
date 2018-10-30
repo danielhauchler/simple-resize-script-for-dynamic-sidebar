@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #size-detector {
+      width: 100vw;
+      height: 100vh;
+      background-color: #eaeaea;
+    }
+    #ad {
+      background-color: #eaeaea;
+      box-sizing: border-box;
+      display: inline-block;
+    }
+    #ad img {
+      height: 100%;
+      height: 100%
+    }
+  </style>
+</head>
+<body>
+  <div id="size-detector">
+      <div id="ad">
+        <img src="https://lh3.googleusercontent.com/-CvehGt9hgL--10_ND70iU0O6MB63SDGL5Uwr4kUy5gS7hNhURsLDnDugxHJyLlesZM=w300-h600" alt="">
+      </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+  <script>
+
+   
+
+    function resize(){
+
+      var canvasWidth = $('#size-detector').width();
+      var canvasHeight = $('#size-detector').height();
+      var adWidth = $('#ad').width();
+      var adHeight = $('#ad').height();
+    
+      if(adHeight < canvasHeight){
+        $('#ad').css('width', canvasWidth);
+        $('#ad').css('height', canvasWidth * 2);
+        adWidth = $('#ad').width();
+        adHeight = $('#ad').height();
+      }     
+      if (adHeight >= $(window).height()) {
+        $('#ad').css('height', '100%');
+      }
+    }
+    $( window ).resize(function() {
+      resize()
+    });
+    resize()
+  </script>
+</body>
+</html>
