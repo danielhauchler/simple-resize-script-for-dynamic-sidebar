@@ -1,0 +1,1 @@
+# simple-resize-script-for-dynamic-sidebar
