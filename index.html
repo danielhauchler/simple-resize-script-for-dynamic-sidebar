@@ -30,27 +30,25 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
   <script>
+    function resize() {
 
-   
-
-    function resize(){
-
-      var canvasWidth = $('#size-detector').width();
-      var canvasHeight = $('#size-detector').height();
       var adWidth = $('#ad').width();
       var adHeight = $('#ad').height();
-    
-      if(adHeight < canvasHeight){
-        $('#ad').css('width', canvasWidth);
-        $('#ad').css('height', canvasWidth * 2);
-        adWidth = $('#ad').width();
-        adHeight = $('#ad').height();
-      }     
-      if (adHeight >= $(window).height()) {
-        $('#ad').css('height', '100%');
+
+      var screenRatio = $(document).width() / $(document).height();
+      var adRatio = 567 / 1024
+
+
+      if (screenRatio > adRatio) {
+        $('#ad').css('height', $(window).height())
+        $('#ad').css('width', $(window).height() * adRatio)
+      } else {
+        $('#ad').css('width', $(window).width())
+        $('#ad').css('height', $(window).width() / adRatio)
       }
     }
-    $( window ).resize(function() {
+    
+    $(window).resize(function () {
       resize()
     });
     resize()
